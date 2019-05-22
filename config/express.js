@@ -4,6 +4,8 @@ const morgan = require('morgan');
 const compress = require('compression');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const path = require('path');
+const logger = require(path.resolve('config/logger'));
 //const session = require('express-session');
 
 // Define the Express configuration method
