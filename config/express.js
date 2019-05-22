@@ -1,3 +1,5 @@
+'use strict';
+
 // Load the module dependencies
 const express = require('express');
 const morgan = require('morgan');
@@ -7,6 +9,8 @@ const methodOverride = require('method-override');
 const path = require('path');
 const logger = require(path.resolve('config/logger'));
 //const session = require('express-session');
+
+require(path.resolve('config/line'));
 
 // Define the Express configuration method
 module.exports = function () {
@@ -20,13 +24,12 @@ module.exports = function () {
     app.use(compress());
   }
 
-
   // Use the 'body-parser' and 'method-override' middleware functions
-  app.use(bodyParser.urlencoded({
-    extended: true
-  }));
-  app.use(bodyParser.json());
-  app.use(methodOverride());
+  // app.use(bodyParser.urlencoded({
+  //   extended: true
+  // }));
+  // app.use(bodyParser.json());
+  // app.use(methodOverride());
 
   // Write access logs
   app.use(logger.connectLogger(logger.getLogger('access')));
