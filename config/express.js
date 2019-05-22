@@ -1,5 +1,4 @@
 // Load the module dependencies
-const config = require('./config');
 const express = require('express');
 const morgan = require('morgan');
 const compress = require('compression');
@@ -19,12 +18,18 @@ module.exports = function () {
     app.use(compress());
   }
 
+
   // Use the 'body-parser' and 'method-override' middleware functions
   app.use(bodyParser.urlencoded({
     extended: true
   }));
   app.use(bodyParser.json());
   app.use(methodOverride());
+
+  // Write access logs
+  app.use(logger.connectLogger(logger.getLogger('access')));
+  // Configure the route
+  require(path.resolve('config/router'))(app);
 
   // Configure the 'session' middleware
   // app.use(session({
@@ -33,15 +38,16 @@ module.exports = function () {
   // 	secret: config.sessionSecret
   // }));
 
-  // Set the application view engine and 'views' folder
-  app.set('views', './app/views');
-  app.set('view engine', 'ejs');
-
   // Load the 'index' routing file
   require('../app/routes/index.route.js')(app);
 
   // Configure static file serving
   app.use(express.static('./public'));
+  app.use('/lib', express.static(path.resolve('./node_modules')));
+
+  // Set the application view engine and 'views' folder
+  app.set('views', './app/views');
+  app.set('view engine', 'ejs');
 
   // Return the Express application instance
   return app;
