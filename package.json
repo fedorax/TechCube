@@ -1,0 +1,31 @@
+{
+  "name": "techcube",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "ejs": "^2.6.1",
+    "express-session": "^1.16.1",
+    "express": "^4.17.0",
+    "log4js": "^4.2.0",
+    "method-override": "^3.0.0",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/fedorax/TechCube.git"
+  },
+  "author": "fedorax",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fedorax/TechCube/issues"
+  },
+  "homepage": "https://github.com/fedorax/TechCube#readme"
+}
