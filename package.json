@@ -14,7 +14,9 @@
     "method-override": "^3.0.0",
     "morgan": "^1.9.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "axios": ">=0.21.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
